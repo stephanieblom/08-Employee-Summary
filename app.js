@@ -51,7 +51,7 @@
         let manager = new Manager( managerData.name, managerData.email, managerData.officeNumber );
 
         const name = manager.name;
-        const ID = manager.ID;
+        const ID = manager.id;
         const email = manager.email;
         const officeNumber = manager.officeNumber;
         console.log('Name: ' + name);
@@ -64,18 +64,17 @@
             }
             //console.log(`data ${data}`);
 
-            var card = `<div class="card bg-light mb-3" style="max-width: 18rem;">
-                        <div class="card-header">Engineer: ${name}</div>
+            var card = `<div class="card bg-light mb-3 shadow bg-white rounded col-4" style="max-width: 18rem;">
+                        <div class="card-header"><i class="fa fa-coffee" aria-hidden="true"></i>Manager: ${name}</div>
                             <div class="card-body">
                                 <h5 class="card-title id">ID:${ID}</h5>
                                 <h5 class="card-title email">Email:${email}</h5>
                                 <h5 class="card-title git">Office Number:${officeNumber}</h5>
                             </div>
                     </div>`;
-            var result = data.replace(`</body>`, card + '</body>');
+            var result = data.replace(`</div></div></body>`, card + `</div></div></body>`);
 
-            fs.writeFile( "main.html" , result
-            , function(err) {
+            fs.writeFile( "main.html" , result, function(err) {
 
                 if (err) {
                 return console.log(err);
@@ -98,7 +97,7 @@
             let engineer = new Engineer( engineerData.name, engineerData.email, engineerData.git );
 
             const name = engineer.name;
-            const ID = engineer.ID;
+            const ID = engineer.id;
             const email = engineer.email;
             const github = engineer.github;
             console.log('Name: ' + name);
@@ -111,15 +110,15 @@
                 }
                 //console.log(data);
 
-                var card = `<div class="card bg-light mb-3" style="max-width: 18rem;">
-                            <div class="card-header">Engineer: ${name}</div>
+                var card = `<div class="card bg-light mb-3 shadow bg-white rounded col-4" style="max-width: 18rem;">
+                            <div class="card-header"><i class="fa fa-cogs" aria-hidden="true"></i>Engineer: ${name}</div>
                                 <div class="card-body">
                                     <h5 class="card-title id">ID:${ID}</h5>
                                     <h5 class="card-title email">Email:${email}</h5>
                                     <h5 class="card-title git">GitHub:${github}</h5>
                                 </div>
                         </div>`;
-                var result = data.replace(`</body>`, card + '</body>');
+                var result = data.replace(`</div></div></body>`, card + '</div></div></body>');
 
                 fs.writeFile( "main.html" , result
                 , function(err) {
@@ -139,13 +138,14 @@
         async function intern(){
             const internData = await inquirer.prompt([
                 { name: 'name', type: 'input', message: `What is the intern's name?` },
+                { name: 'email', type: 'input', message: 'What is their email?' },
                 { name: 'school', type: 'input', message: 'What school do they go to?' }
             ]);
 
             let intern = new Intern( internData.name, internData.email, internData.school );
 
             const name = intern.name;
-            const ID = intern.ID;
+            const ID = intern.id;
             const email = intern.email;
             const school = intern.school;
             console.log('Name: ' + name);
@@ -158,19 +158,18 @@
                 }
                 //console.log(data);
 
-                var card = `<div class="card bg-light mb-3" style="max-width: 18rem;">
-                            <div class="card-header">Intern: ${name}</div>
+                var card = `<div class="card bg-light mb-3 shadow bg-white rounded col-4" style="max-width: 18rem;">
+                            <div class="card-header"><i class="fa fa-graduation-cap" aria-hidden="true"></i>Intern: ${name}</div>
                                 <div class="card-body">
                                     <h5 class="card-title id">ID:${ID}</h5>
                                     <h5 class="card-title email">Email:${email}</h5>
                                     <h5 class="card-title git">School:${school}</h5>
                                 </div>
                         </div>`;
-                var result = data.replace(`</body>`, card + '</body>');
+                var result = data.replace(`</div></div></body>`, card + `</div></div></body>`);
                 //console.log(result)
 
-                fs.writeFile( "main.html" , result
-                , function(err) {
+                fs.writeFile( "main.html" , result, function(err) {
 
                     if (err) {
                     return console.log(err);
