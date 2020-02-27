@@ -1,27 +1,4 @@
-/* WIREFRAME:
-    < input team manager + number members:
-        - name/email + number members
-        - role = 'Manager'
-     (loop)
-        < member info:
-            - name + role=(engineer | interns)
-            - intern: school
-            - engineer: github username
 
-        
-    what building blocks do we need?
-    Employee class (name, email, role)
-    Manager class (employees, array)
-    Intern class (school)
-    Engineer class (github)
-    
-    test creating of each class
-    > create Manager Class, check it works.
-    > add an employee (Intern): did it increase managers employees?
-    > add an employee (engineer): did it increase employees.
-    
-    * TDD is nice but not necessary for this.
-    */
     const inquirer = require( 'inquirer' );
     const fs = require( 'fs' );
 
@@ -61,18 +38,6 @@
     }
 }
 
-    
-    // function readCard( cardInfo ){
-    //     // use role to get template file (ex. 'Manager' -> manager.html)
-    //     const fileName = cardInfo.role.toLowerCase();
-    //     const html = fs.readFileSync( `templates/${fileName}.html`, 'utf8' );
-
-    //     // replace any {{ (field) }} from template and return
-    //     return html.replace(/{{([^}]*)}}/g, function(match) {
-    //         const name = match.substr(3,match.length-6); 
-    //         return cardInfo[name] ? cardInfo[name] : ''; });
-    //}
-
 
     async function main(){
         const managerData = await inquirer.prompt([
@@ -97,7 +62,7 @@
             if (err) {
               return console.log(err);
             }
-            console.log(`data ${data}`);
+            //console.log(`data ${data}`);
 
             var card = `<div class="card bg-light mb-3" style="max-width: 18rem;">
                         <div class="card-header">Engineer: ${name}</div>
@@ -109,19 +74,19 @@
                     </div>`;
             var result = data.replace(`</body>`, card + '</body>');
 
-            fs.appendFile( "main.html" , result
+            fs.writeFile( "main.html" , result
             , function(err) {
 
                 if (err) {
                 return console.log(err);
                 }
             
-                console.log(`New: ${result}`);
+                //console.log(`New: ${result}`);
           });
         });
           
 
-
+        //engineer prompt
         async function engineer(){
 
             const engineerData = await inquirer.prompt([
@@ -156,21 +121,21 @@
                         </div>`;
                 var result = data.replace(`</body>`, card + '</body>');
 
-                fs.appendFile( "main.html" , result
+                fs.writeFile( "main.html" , result
                 , function(err) {
 
                     if (err) {
                     return console.log(err);
                     }
                 
-                    console.log("Has written");
+                    //console.log("Has written");
               });
             });
               
             
         }
               
-
+        //intern prompt 
         async function intern(){
             const internData = await inquirer.prompt([
                 { name: 'name', type: 'input', message: `What is the intern's name?` },
@@ -202,16 +167,16 @@
                                 </div>
                         </div>`;
                 var result = data.replace(`</body>`, card + '</body>');
-                console.log(result)
+                //console.log(result)
 
-                fs.appendFile( "main.html" , result
+                fs.writeFile( "main.html" , result
                 , function(err) {
 
                     if (err) {
                     return console.log(err);
                     }
                 
-                    console.log("Has written");
+                    //console.log("Has written");
               });
             });
         }
@@ -237,15 +202,5 @@
                 };
 
             // circle through asking about engineers/interns
-
-
-        // now generate html and write file
-        // let team = '';
-        // team += readCard( manager );
-        // manager.getUsers().forEach( function( user ){
-        //     team += readCard( user );
-        // });
-        // const html = readCard( { role: 'main', team: team } );
-        // fs.writeFileSync( 'org.html', html );
     }
     main();
