@@ -10,6 +10,12 @@
 
 </head>
 <style>
+    html, body { 
+        margin:0;
+        padding:0;
+        width:100%;
+        overflow: auto;
+    }
     .card-header{
         background-color: deepskyblue;
     }
@@ -17,21 +23,24 @@
         background-color: #dc3545;
         color: white;
         text-align: center;
+        width: 100%;
     }
     .container{
         width : 100%;
-        margin-left: 60px;
-        margin-right: 60px;
-        display: inline-block;
+        overflow: auto;
+
 
     }
     .card{
         display: inline-block;
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
     }
     .flex {
         width:100%;
         display: flex;
-        justify-content: center;
+        /* justify-content: center; */
     }
 </style>
 <body>
@@ -39,8 +48,11 @@
           <h1 class="display-4">My Team</h1>
     </div>
     <div class="container">
-        <div class="flex row">
+        <div class="row justify-content-center">
 
-   </div></div></body>
+   
+        </div>
+    </div>
+</body>
 
 </html>
