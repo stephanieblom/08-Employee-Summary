@@ -58,7 +58,7 @@
         console.log('email: ' + email);
         console.log(`Done`)
 
-        fs.readFile("main.html", 'utf8', function (err,data) {
+        fs.readFile("index.html", 'utf8', function (err,data) {
             if (err) {
               return console.log(err);
             }
@@ -74,7 +74,7 @@
                     </div>`;
             var result = data.replace(`</div></div></body>`, card + `</div></div></body>`);
 
-            fs.writeFile( "main.html" , result, function(err) {
+            fs.writeFile( "index.html" , result, function(err) {
 
                 if (err) {
                 return console.log(err);
@@ -104,7 +104,7 @@
             console.log('email: ' + email);
             console.log(`Done`)
 
-            fs.readFile("main.html", 'utf8', function (err,data) {
+            fs.readFile("index.html", 'utf8', function (err,data) {
                 if (err) {
                   return console.log(err);
                 }
@@ -120,7 +120,7 @@
                         </div>`;
                 var result = data.replace(`</div></div></body>`, card + '</div></div></body>');
 
-                fs.writeFile( "main.html" , result
+                fs.writeFile("index.html" , result
                 , function(err) {
 
                     if (err) {
@@ -152,7 +152,7 @@
             console.log('email: ' + email);
             console.log(`Done`)
 
-            fs.readFile("main.html", 'utf8', function (err,data) {
+            fs.readFile("index.html", 'utf8', function (err,data) {
                 if (err) {
                   return console.log(err);
                 }
@@ -169,7 +169,7 @@
                 var result = data.replace(`</div></div></body>`, card + `</div></div></body>`);
                 //console.log(result)
 
-                fs.writeFile( "main.html" , result, function(err) {
+                fs.writeFile( "index.html" , result, function(err) {
 
                     if (err) {
                     return console.log(err);
